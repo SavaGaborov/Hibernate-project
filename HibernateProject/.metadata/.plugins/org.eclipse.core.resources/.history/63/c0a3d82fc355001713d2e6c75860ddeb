@@ -1,0 +1,5 @@
+package savagaborov.hibernate;
+
+public class Ticket {
+
+}

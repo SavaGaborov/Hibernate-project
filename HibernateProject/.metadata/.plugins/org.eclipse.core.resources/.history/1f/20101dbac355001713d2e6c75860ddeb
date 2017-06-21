@@ -1,0 +1,16 @@
+package savagaborov.hibernate;
+
+public class Ticket {
+
+	private long id;
+	private String event;
+	private String type;
+	private float price;
+	
+	public Ticket() {
+		
+	}
+	
+	
+	
+}

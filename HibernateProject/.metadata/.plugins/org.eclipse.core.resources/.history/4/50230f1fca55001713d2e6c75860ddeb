@@ -1,0 +1,59 @@
+package savagaborov.hibernate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+public class TicketManager {
+	
+	protected SessionFactory sessionFactory;
+	
+	protected void setup() {
+		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+				.configure() // configures																					// hibernate.cfg.xml
+				.build();
+		try {
+			sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+		} catch (Exception e) {
+			e.printStackTrace();
+			StandardServiceRegistryBuilder.destroy(registry);
+		}
+	}
+	
+	protected void exit() {
+		sessionFactory.close();
+	}
+	
+	//create operation
+	protected void create() {
+		
+		Ticket ticket = new Ticket();
+		
+		ticket.setEvent("UEFA Champions league final");
+		ticket.setType("Sport");
+		ticket.setPrice(260.55f);
+
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.save(ticket);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	public static void main(String[] args) {
+		
+		TicketManager manager = new TicketManager();
+		
+		manager.setup();
+		
+		manager.create();
+		
+		manager.exit();
+
+	}
+
+}

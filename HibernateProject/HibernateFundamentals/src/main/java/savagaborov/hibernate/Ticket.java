@@ -1,0 +1,66 @@
+package savagaborov.hibernate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ticket")
+public class Ticket {
+
+	private long id;
+	private String event;
+	private String type;
+	private float price;
+	
+	public Ticket() {
+		
+	}
+	
+	public Ticket(long id, String event, String type, float price) {
+		super();
+		this.id = id;
+		this.event = event;
+		this.type = type;
+		this.price = price;
+	}
+	
+	@Id
+	@Column (name = "ticket_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getEvent() {
+		return event;
+	}
+
+	public void setEvent(String event) {
+		this.event = event;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+	
+}
