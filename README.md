@@ -1,4 +1,5 @@
 # Hibernate-project
+Eclipse, Maven, Hibernate, Annotations, MySql
 
 The purpose of this project is to show up my basic skills about Hibernate framework.
 
